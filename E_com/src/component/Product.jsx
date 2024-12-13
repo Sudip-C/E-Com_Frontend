@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { BASE_API } from "../utils/Api";
 
 function Product(){
     const [products,setProducts]=useState([]);
@@ -23,7 +24,7 @@ if(sort){
 }else if(sort&category&search){
     API=`https://e-com-backendnode-app.onrender.com/api/product/filter?search=${search}&category=${category}&sort=${sort}`
 }else{
-    API="https://e-com-backendnode-app.onrender.com/api/product/getProduct"
+    API=`${BASE_API}/getProduct`
 }
 async function getProducts(){
 try {

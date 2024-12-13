@@ -1,0 +1,1 @@
+export const BASE_API="https://e-com-backendnode-app.onrender.com/api/product"
