@@ -1,13 +1,13 @@
 
+import AllRoutes from './component/Allroutes'
 import Navbar from './component/Navbar'
-import Product from './component/Product'
 
 function App() {
 
   return (
    <>
     <Navbar/>
-    <Product/>
+    <AllRoutes/>
    </>
   )
 }

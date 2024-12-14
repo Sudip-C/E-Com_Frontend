@@ -8,27 +8,28 @@ function Product(){
     const [sort,setSort]=useState('');
     const [category,setCategory]=useState('')
 
-    let API;
-if(sort){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?sort=${sort}`
-}else if(category){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?category=${category}`
-}else if(search){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?search=${search}`
-}else if(sort&category){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?category=${category}&sort=${sort}`
-}else if(sort&search){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?search=${search}&sort=${sort}`
-}else if(search&category){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?search=${search}&category=${category}`
-}else if(sort&category&search){
-    API=`https://e-com-backendnode-app.onrender.com/api/product/filter?search=${search}&category=${category}&sort=${sort}`
-}else{
-    API=`${BASE_API}/getProduct`
-}
+
+let filter_params={}
+
+if(category)filter_params.category=category;
+if(sort)filter_params.sort=sort;
+if(search)filter_params.search=search;
+
+const storedItems=JSON.parse(localStorage.getItem("wishlist"))|| []
+
+
+const AddToWishList = (itemId) => {
+    const clickedItem = products.find((item) => item._id === itemId);
+    alert("Product added to Wishlist.")
+    if(clickedItem){
+        storedItems.push(clickedItem)
+        localStorage.setItem("wishList",JSON.stringify(storedItems))
+    }
+  };
+
 async function getProducts(){
 try {
-    const response= await axios.get(API)
+    const response= await axios.get(`${BASE_API}/filter`,{params:filter_params})
     setProducts(response.data)
 } catch (error) {
     alert(error.message)
@@ -39,7 +40,6 @@ useEffect(()=>{
     getProducts()
 },[sort,category,search])
 
-console.log(sort)
     return(
         <div className="main_cont">
             <div className="searchBox">
@@ -67,7 +67,7 @@ console.log(sort)
                     <h3>{e.name}</h3>
                     <p>{e.category}</p>
                     <p>₹{e.price}</p>
-                    <button>Add to Wishlist</button>
+                    <button onClick={() => AddToWishList(e._id)}>Add to Wishlist</button>
                     
 
                 </div>

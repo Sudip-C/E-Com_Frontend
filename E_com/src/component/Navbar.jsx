@@ -1,12 +1,12 @@
+import { Link as NavLink } from 'react-router'
 import '../css/product.css'
-import { CiHeart } from "react-icons/ci";
 function Navbar(){
     return(
         <div className="navBar">
       <h1>E_COM</h1>
       <div className='Items'>
-      <p>Products</p>
-      <CiHeart />
+      <NavLink style={{textDecoration:"none", color:"black"}} to='/'><p>Products</p></NavLink>
+      <NavLink style={{textDecoration:"none", color:"black"}}to='/wishlist'><p>Wishlist</p></NavLink>
       </div>
     </div>
     )

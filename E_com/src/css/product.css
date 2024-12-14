@@ -6,12 +6,26 @@
   justify-content: space-around;
   border-bottom:1px solid black;
   margin-bottom: 20px;
+  font-family:Arial, Helvetica, sans-serif;
+background-color: rgb(175, 248, 248);
+}
+.navBar h1{
+  font-size: 30px;
+  font-weight: 700;
 }
 .Items{
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.Items p{
+  font-size: 20px;
+}
+.Items p:hover{
+  color: blue;
+  font-weight: 500;
 }
 .container{
   display: grid;
@@ -23,6 +37,21 @@
   border: 1px solid rgb(0, 0, 0);
   padding: 10px;
   border-radius: 5px;
+}
+.products:hover{
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.products button{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(135, 245, 239);
+  font-weight: 600;
+}
+.products button:hover{
+  background-color: black;
+  color: white;
 }
 .main_cont{
   padding: 15px;
@@ -42,6 +71,7 @@
   border-radius: 10px;
   margin-bottom: 10px;
 }
+
 @media screen and (max-width:300px){
   
 .navBar{
@@ -98,6 +128,7 @@
   justify-content: space-around;
   border-bottom:1px solid black;
   margin-bottom: 20px;
+  font-family:'Times New Roman', Times, serif;
 }
 .Items{
   width: 25%;
